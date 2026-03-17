@@ -1,2 +1,3 @@
-public class BookRecord {
+public class BookRecord implements DisplayableRecord {
+
 }

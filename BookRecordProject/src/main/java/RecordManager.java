@@ -9,11 +9,12 @@ public class RecordManager {
     }
 
     public void addRecord(DisplayableRecord record) {
-        if (this.records.contains(record)){
-            throw new  IllegalArgumentException("Record already exists");
-        }
-        else{
-            this.records.add(record);
+        for (DisplayableRecord r : records) {
+            if (r.getId().equals(record.getId())) {
+                throw new IllegalArgumentException("Record already exists");
+            } else {
+                this.records.add(record);
+            }
         }
     }
 
@@ -46,11 +47,7 @@ public class RecordManager {
 
     public void displayAllRecords(){
         for (DisplayableRecord record : records) {
-            System.out.println("ID: " + record.getId());
-            System.out.println("Title: " + record.getTitle());
-            System.out.println("Author: " + record.getAuthor());
-            System.out.println("Year: " + record.getYear());
+            System.out.println(record.getDisplayText());
         }
     }
-
 }
