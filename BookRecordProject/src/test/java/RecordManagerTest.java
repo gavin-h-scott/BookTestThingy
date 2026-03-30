@@ -20,32 +20,32 @@ public class RecordManagerTest {
 
     @Test
     public void addAndFindRecord() {
-        BookRecord br = new BookRecord("The Hobbit", "J.R.R. Tolkien", 1937);
-        recordManager.addRecord(br);
+        BookRecord bookRecord = new BookRecord(1, "The Hobbit", "J.R.R. Tolkien", 1937);
+        recordManager.addRecord(bookRecord);
         assertEquals(1, recordManager.getAllRecords().size());
-        assertSame(br, recordManager.findRecordById(br.getId()));
+        assertSame(bookRecord, recordManager.findRecordById(bookRecord.getId()));
     }
 
     @Test
     public void addingDuplicateThrows() {
-        BookRecord br = new BookRecord("The Hobbit", "J.R.R. Tolkien", 1937);
-        recordManager.addRecord(br);
-        assertThrows(IllegalArgumentException.class, () -> recordManager.addRecord(br));
+        BookRecord bookRecord = new BookRecord(1, "The Hobbit", "J.R.R. Tolkien", 1937);
+        recordManager.addRecord(bookRecord);
+        assertThrows(IllegalArgumentException.class, () -> recordManager.addRecord(bookRecord));
     }
 
     @Test
     public void removeRecordById() {
-        BookRecord br = new BookRecord("The Hobbit", "J.R.R. Tolkien", 1937);
-        recordManager.addRecord(br);
-        boolean removed = recordManager.removeRecord(br.getId());
+        BookRecord bookRecord = new BookRecord(1, "The Hobbit", "J.R.R. Tolkien", 1937);
+        recordManager.addRecord(bookRecord);
+        boolean removed = recordManager.removeRecord(bookRecord.getId());
         assertTrue(removed);
-        assertNull(recordManager.findRecordById(br.getId()));
+        assertNull(recordManager.findRecordById(bookRecord.getId()));
     }
 
     @Test
     public void setRecordsReplacesList() {
         ArrayList<DisplayableRecord> list = new ArrayList<>();
-        list.add(new BookRecord("A", "B", 2000));
+        list.add(new BookRecord(1, "A", "B", 2000));
         recordManager.setRecords(list);
         assertEquals(1, recordManager.getAllRecords().size());
     }
