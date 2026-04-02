@@ -1,3 +1,4 @@
+//Gavin Scott Class - Stores and manages all book records in memory
 import java.util.ArrayList;
 
 public class RecordManager {
