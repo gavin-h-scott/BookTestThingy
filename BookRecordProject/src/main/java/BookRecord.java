@@ -45,27 +45,32 @@ public class BookRecord implements DisplayableRecord {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o){
         if (this == o) {
             return true;
         }
-        if (o== null){
+        if (o == null)  {
             return false;
         }
-        if (getClass() != o.getClass()){
+        try  {
+            BookRecord other = (BookRecord) o;
+            return this.author.equals(other.author)
+                    && this.title.equals(other.title)
+                    && this.id.equals(other.id);
+        } catch (ClassCastException e) {
             return false;
         }
-        BookRecord other = (BookRecord) o;
+    }
 
-        if (!this.id.equals(other.id)){
-            return false;
-        }
-        if (!this.title.equals(other.title)){
-            return false;
-        }
-        if (!this.author.equals(other.author)){
-            return false;
-        }
-        return true;
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public int getYear() {
+        return year;
     }
 }
