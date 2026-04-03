@@ -12,8 +12,14 @@ public class BookRecord implements DisplayableRecord {
         if(title==null || title.isEmpty()){
             throw new IllegalArgumentException("Title cannot be null or empty");
         }
+        if(title.length()<3){
+            throw new IllegalArgumentException("Title must be at least 3 characters");
+        }
         if(author==null || author.isEmpty()){
             throw new IllegalArgumentException("Author cannot be null or empty");
+        }
+        if(author.length()<3){
+            throw new IllegalArgumentException("Author must be at least 3 characters");
         }
         if (year<0 || year>2026){
             throw new IllegalArgumentException("Year cannot be less than 0 or 2026");
