@@ -11,12 +11,11 @@ public class RecordManager {
 
     public void addRecord(DisplayableRecord record) {
         for (DisplayableRecord r : records) {
-            if (r.getId().equals(record.getId())) {
+            if (r.equals(record)) {
                 throw new IllegalArgumentException("Record already exists");
-            } else {
-                this.records.add(record);
             }
         }
+        this.records.add(record);
     }
 
     public boolean removeRecord(String id){
@@ -48,7 +47,7 @@ public class RecordManager {
 
     public void displayAllRecords(){
         for (DisplayableRecord record : records) {
-            System.out.println(record.getDisplayText());
+            record.getDisplayText();
         }
     }
 }
